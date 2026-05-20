@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Our Springboard — Ray White Glenelg | Brighton · Projects SA · Loan Market Glenelg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rw-yellow:#FFE512;
+    --rw-yellow-500:#F5D900;
+    --rw-yellow-50:#FFFBE0;
+    --rw-white:#FFFFFF;
+    --rw-ink:#1a1a1a;
+    --rw-grey-900:#2b2b2b;
+    --rw-grey-800:#404040;
+    --rw-grey-700:#595959;
+    --rw-grey-600:#737373;
+    --rw-grey-500:#9a9a9a;
+    --rw-grey-300:#d9d9d9;
+    --rw-grey-200:#ebebec;
+    --rw-grey-100:#f4f4f5;
+    --rw-grey-50:#fafafa;
+    --shadow-sm:0 1px 3px rgba(20,20,20,.06),0 1px 2px rgba(20,20,20,.04);
+    --shadow-md:0 4px 12px rgba(20,20,20,.08);
+    --radius-md:4px;
+    --radius-sm:2px;
+    --font-sans:'Lato','Helvetica Neue',Arial,sans-serif;
+    --font-display:'Playfair Display',Georgia,serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--rw-grey-50);color:var(--rw-ink);font-family:var(--font-sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--rw-yellow);color:var(--rw-ink)}
+
+  /* ---------------- Header ---------------- */
+  .top{
+    position:sticky;top:0;z-index:30;
+    background:var(--rw-white);
+    border-bottom:1px solid var(--rw-grey-200);
+    display:flex;align-items:center;gap:18px;
+    padding:12px 28px;
+  }
+  /* Three equal businesses — same logo height, thin dividers between */
+  .brand-row{display:flex;align-items:center;gap:14px;min-width:0;flex-wrap:wrap}
+  .logo{
+    display:flex;align-items:center;justify-content:center;
+    height:46px;flex-shrink:0;
+    border-radius:var(--radius-sm);overflow:hidden;
+  }
+  .logo img{height:100%;width:auto;display:block}
+  .logo-sq{width:46px}
+  .logo-wide{height:46px}
+  .logo-wide img{height:46px;width:auto}
+  .brand-divider{width:1px;height:30px;background:var(--rw-grey-300);flex-shrink:0}
+  .brand-caption{
+    margin-left:4px;font-size:11px;color:var(--rw-grey-700);
+    letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+    border-left:1px solid var(--rw-grey-300);padding-left:14px;line-height:1.3;
+  }
+  .brand-caption em{font-style:normal;color:var(--rw-ink)}
+  .icon-btn.menu-btn{display:none}
+  .top-spacer{flex:1}
+  .search{
+    display:flex;align-items:center;gap:8px;
+    background:var(--rw-grey-100);
+    border:1px solid transparent;
+    border-radius:var(--radius-md);
+    padding:8px 12px;width:320px;max-width:36vw;
+    transition:border-color .15s;
+  }
+  .search:focus-within{border-color:var(--rw-grey-300);background:var(--rw-white)}
+  .search input{
+    border:0;background:transparent;outline:none;font:inherit;color:var(--rw-ink);
+    width:100%;font-size:14px;
+  }
+  .search input::placeholder{color:var(--rw-grey-600)}
+  .top-actions{display:flex;align-items:center;gap:6px}
+  .icon-btn{
+    width:36px;height:36px;border-radius:var(--radius-md);border:0;background:transparent;
+    display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rw-grey-800);
+    transition:background .15s;
+  }
+  .icon-btn:hover{background:var(--rw-grey-100)}
+  .avatar{
+    width:34px;height:34px;border-radius:50%;background:var(--rw-grey-200);
+    display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--rw-grey-800);
+    border:2px solid var(--rw-yellow);flex-shrink:0;
+  }
+
+  /* ---------------- Shell ---------------- */
+  .shell{display:grid;grid-template-columns:248px 1fr;min-height:calc(100vh - 67px)}
+
+  /* ---------------- Side nav ---------------- */
+  .side{
+    background:var(--rw-white);
+    border-right:1px solid var(--rw-grey-200);
+    padding:24px 16px 32px;
+    position:sticky;top:67px;
+    align-self:start;
+    height:calc(100vh - 67px);
+    overflow-y:auto;
+  }
+  .nav-label{
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--rw-grey-600);font-weight:700;
+    padding:0 12px;margin:18px 0 8px;
+  }
+  .nav-label:first-of-type{margin-top:0}
+  .nav-item{
+    display:flex;align-items:center;gap:12px;
+    padding:9px 12px;border-radius:var(--radius-md);
+    color:var(--rw-grey-800);font-size:14px;font-weight:400;
+    cursor:pointer;position:relative;
+    transition:background .15s,color .15s;
+  }
+  .nav-item .ico{flex-shrink:0;color:var(--rw-grey-600)}
+  .nav-item:hover{background:var(--rw-grey-100);color:var(--rw-ink)}
+  .nav-item:hover .ico{color:var(--rw-grey-800)}
+  .nav-item.active{background:var(--rw-grey-100);color:var(--rw-ink);font-weight:700}
+  .nav-item.active::before{
+    content:"";position:absolute;left:-16px;top:6px;bottom:6px;
+    width:3px;background:var(--rw-yellow);border-radius:0 2px 2px 0;
+  }
+  .nav-item.active .ico{color:var(--rw-ink)}
+  .nav-divider{height:1px;background:var(--rw-grey-200);margin:14px 4px}
+
+  .side-foot{
+    margin-top:24px;padding:14px 12px;border-top:1px solid var(--rw-grey-200);
+    font-size:12px;color:var(--rw-grey-600);
+  }
+
+  /* ---------------- Main ---------------- */
+  .main{padding:32px 40px 56px;max-width:1240px;width:100%}
+
+  .crumbs{
+    display:flex;align-items:center;gap:8px;font-size:12px;color:var(--rw-grey-600);
+    letter-spacing:.06em;text-transform:uppercase;font-weight:700;margin-bottom:14px;
+  }
+  .crumbs .sep{opacity:.5}
+
+  .hero{
+    display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:stretch;margin-bottom:36px;
+  }
+  .hero-left{
+    background:var(--rw-white);border:1px solid var(--rw-grey-200);border-radius:var(--radius-md);
+    padding:36px 36px 32px;position:relative;overflow:hidden;
+  }
+  .hero-left::after{
+    content:"";position:absolute;right:-40px;bottom:-40px;width:160px;height:160px;
+    background:var(--rw-yellow);border-radius:var(--radius-sm);transform:rotate(8deg);opacity:.95;
+  }
+  .hero-eyebrow{
+    font-family:var(--font-display);font-style:italic;font-weight:400;color:var(--rw-grey-700);
+    font-size:18px;margin-bottom:6px;
+  }
+  .hero-h1{
+    font-size:clamp(36px,4.4vw,56px);font-weight:900;line-height:1.02;letter-spacing:-.02em;
+    margin:0 0 14px;color:var(--rw-ink);
+  }
+  .hero-h1 em{
+    font-family:var(--font-display);font-style:italic;font-weight:400;letter-spacing:-.01em;
+  }
+  .hero-p{
+    color:var(--rw-grey-700);font-size:16px;max-width:46ch;margin:0 0 22px;line-height:1.55;
+  }
+  .hero-actions{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:1}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 18px;border-radius:var(--radius-md);
+    font:inherit;font-weight:700;font-size:14px;cursor:pointer;border:1px solid transparent;
+    transition:background .15s,border-color .15s,color .15s;
+  }
+  .btn-primary{background:var(--rw-yellow);color:var(--rw-ink)}
+  .btn-primary:hover{background:var(--rw-yellow-500)}
+  .btn-ghost{background:transparent;color:var(--rw-ink);border-color:var(--rw-grey-300)}
+  .btn-ghost:hover{background:var(--rw-grey-100);border-color:var(--rw-grey-400)}
+
+  .hero-right{
+    background:var(--rw-ink);color:var(--rw-white);
+    border-radius:var(--radius-md);padding:28px 28px 24px;
+    display:flex;flex-direction:column;
+  }
+  .hero-right .label{
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+    color:var(--rw-yellow);margin-bottom:14px;
+  }
+  .today-date{
+    font-family:var(--font-display);font-style:italic;font-size:34px;font-weight:400;
+    line-height:1.05;margin-bottom:4px;letter-spacing:-.01em;
+  }
+  .today-weather{color:#bdbdbd;font-size:13px;margin-bottom:18px}
+  .today-list{list-style:none;margin:0;padding:14px 0 0;border-top:1px solid #2e2e2e;flex:1;display:flex;flex-direction:column;gap:12px}
+  .today-list li{display:flex;gap:14px;align-items:flex-start}
+  .pill-time{
+    flex:0 0 64px;font-size:12px;font-weight:700;color:var(--rw-yellow);
+    letter-spacing:.02em;padding-top:1px;
+  }
+  .today-list .meet{font-weight:700;color:#fff;font-size:14px;line-height:1.3}
+  .today-list .sub{color:#9a9a9a;font-size:12px;margin-top:2px}
+
+  /* ---------------- Section heading ---------------- */
+  .sec-head{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:8px 0 16px;
+  }
+  .sec-title{
+    font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rw-grey-700);
+    display:flex;align-items:center;gap:10px;margin:0;
+  }
+  .sec-title::before{
+    content:"";display:block;width:18px;height:3px;background:var(--rw-yellow);
+  }
+  .sec-link{font-size:13px;font-weight:700;color:var(--rw-ink);border-bottom:1px solid var(--rw-grey-300);padding-bottom:2px}
+  .sec-link:hover{border-color:var(--rw-ink)}
+
+  /* ---------------- Launchpad tiles ---------------- */
+  .launch{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:40px;
+  }
+  .tile{
+    background:var(--rw-white);border:1px solid var(--rw-grey-200);border-radius:var(--radius-md);
+    padding:18px 16px 16px;text-align:left;display:flex;flex-direction:column;gap:12px;
+    cursor:pointer;transition:box-shadow .15s,transform .15s,border-color .15s;
+    min-height:120px;
+  }
+  .tile:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);border-color:var(--rw-grey-300)}
+  .tile .tile-ico{
+    width:36px;height:36px;border-radius:var(--radius-sm);background:var(--rw-yellow-50);
+    display:flex;align-items:center;justify-content:center;color:var(--rw-ink);
+  }
+  .tile .tile-name{font-weight:700;font-size:14px;line-height:1.25;color:var(--rw-ink)}
+  .tile .tile-sub{font-size:12px;color:var(--rw-grey-600);margin-top:auto;line-height:1.35}
+
+  /* ---------------- Two-col content ---------------- */
+  .cols{display:grid;grid-template-columns:1.55fr 1fr;gap:28px;margin-bottom:40px}
+  .card{
+    background:var(--rw-white);border:1px solid var(--rw-grey-200);border-radius:var(--radius-md);
+    padding:24px 26px;
+  }
+  .card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .card-head h3{
+    margin:0;font-size:18px;font-weight:900;letter-spacing:-.01em;color:var(--rw-ink);
+  }
+  .news-list{display:flex;flex-direction:column}
+  .news-item{
+    display:grid;grid-template-columns:84px 1fr auto;gap:18px;align-items:flex-start;
+    padding:16px 0;border-top:1px solid var(--rw-grey-200);
+  }
+  .news-item:first-child{border-top:0;padding-top:6px}
+  .tag{
+    display:inline-block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+    padding:4px 8px;background:var(--rw-grey-100);color:var(--rw-grey-800);border-radius:var(--radius-sm);
+    white-space:nowrap;
+  }
+  .tag.sales{background:#FFF6B8;color:#5c4f00}
+  .tag.pm{background:#e7eef9;color:#23416e}
+  .tag.lm{background:#e3f0e6;color:#1e4d2c}
+  .tag.admin{background:#f0e9f3;color:#523063}
+  .news-body .ttl{font-weight:700;font-size:15px;line-height:1.35;color:var(--rw-ink);margin-bottom:2px}
+  .news-body .meta{font-size:12px;color:var(--rw-grey-600)}
+  .news-arrow{color:var(--rw-grey-500);align-self:center}
+  .news-item:hover .news-arrow{color:var(--rw-ink)}
+  .news-item{cursor:pointer}
+  .news-item:hover .ttl{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+
+  /* events list */
+  .events{display:flex;flex-direction:column;gap:14px}
+  .event{
+    display:grid;grid-template-columns:54px 1fr;gap:14px;
+    padding:12px 0;border-top:1px solid var(--rw-grey-200);
+  }
+  .event:first-child{border-top:0;padding-top:0}
+  .datestamp{
+    text-align:center;background:var(--rw-grey-100);border-radius:var(--radius-sm);
+    padding:6px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  }
+  .datestamp .m{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--rw-grey-700)}
+  .datestamp .d{font-size:20px;font-weight:900;color:var(--rw-ink);line-height:1}
+  .event .ttl{font-weight:700;font-size:14px;color:var(--rw-ink)}
+  .event .sub{font-size:12px;color:var(--rw-grey-600);margin-top:2px}
+
+  /* ---------------- Spotlight ---------------- */
+  .spotlight{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:36px;
+  }
+  .spot{
+    background:var(--rw-white);border:1px solid var(--rw-grey-200);border-radius:var(--radius-md);
+    overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s;
+    cursor:pointer;
+  }
+  .spot:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+  .spot .ph{
+    aspect-ratio:16/9;background:var(--rw-grey-200);position:relative;overflow:hidden;
+  }
+  /* placeholder photo stand-ins as flat illustrations */
+  .ph-1{background:linear-gradient(135deg,#d6e2ec 0%,#b7c8d6 100%)}
+  .ph-2{background:linear-gradient(135deg,#efe7d6 0%,#d8c9a6 100%)}
+  .ph-3{background:linear-gradient(135deg,#d9e4d6 0%,#b1c3a8 100%)}
+  .ph-tag{
+    position:absolute;top:10px;left:10px;background:var(--rw-yellow);color:var(--rw-ink);
+    font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
+    padding:5px 8px;border-radius:var(--radius-sm);
+  }
+  .spot-body{padding:16px 18px 18px}
+  .spot-body h4{margin:0 0 6px;font-size:16px;font-weight:900;color:var(--rw-ink);letter-spacing:-.01em;line-height:1.3}
+  .spot-body p{margin:0;font-size:13px;color:var(--rw-grey-700);line-height:1.5}
+
+  /* ---------------- Quick contacts ---------------- */
+  .contact-bar{
+    background:var(--rw-white);border:1px solid var(--rw-grey-200);border-radius:var(--radius-md);
+    padding:20px 26px;display:grid;grid-template-columns:1.2fr 2fr;gap:24px;align-items:center;
+  }
+  .contact-bar h3{margin:0 0 4px;font-size:18px;font-weight:900;letter-spacing:-.01em}
+  .contact-bar p{margin:0;font-size:13px;color:var(--rw-grey-700)}
+  .contact-list{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .contact{
+    display:flex;flex-direction:column;gap:2px;font-size:13px;
+    border-left:2px solid var(--rw-grey-200);padding-left:12px;
+  }
+  .contact .role{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--rw-grey-600);font-weight:700}
+  .contact .who{font-weight:700;color:var(--rw-ink)}
+  .contact .reach{color:var(--rw-grey-700)}
+
+  /* ---------------- Footer ---------------- */
+  .foot{
+    margin-top:48px;padding:24px 40px 32px;color:var(--rw-grey-600);font-size:12px;
+    border-top:1px solid var(--rw-grey-200);
+    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  }
+  .foot a{border-bottom:1px solid var(--rw-grey-300);padding-bottom:1px}
+  .foot a:hover{border-color:var(--rw-ink);color:var(--rw-ink)}
+
+  /* ---------------- Responsive ---------------- */
+  @media (max-width: 1180px){
+    .brand-caption{display:none}
+  }
+  @media (max-width: 1100px){
+    .launch{grid-template-columns:repeat(3,1fr)}
+    .hero{grid-template-columns:1fr}
+    .cols{grid-template-columns:1fr}
+    .spotlight{grid-template-columns:1fr 1fr}
+    .contact-bar{grid-template-columns:1fr}
+    .contact-list{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width: 900px){
+    .top{padding:10px 16px;gap:12px}
+    .search{width:200px}
+    .icon-btn.menu-btn{display:inline-flex}
+    .shell{grid-template-columns:1fr}
+    .side{
+      position:fixed;top:0;left:0;bottom:0;
+      width:280px;max-width:88vw;height:100vh;z-index:50;
+      transform:translateX(-100%);transition:transform .2s var(--ease-out,cubic-bezier(.2,.7,.2,1));
+      box-shadow:0 12px 32px rgba(20,20,20,.18);
+      border-right:1px solid var(--rw-grey-200);
+    }
+    body.nav-open .side{transform:translateX(0)}
+    body.nav-open::after{
+      content:"";position:fixed;inset:0;background:rgba(20,20,20,.4);z-index:40;
+    }
+    .nav-item.active::before{left:-16px}
+    .main{padding:24px 20px 40px}
+    .hero-left{padding:28px 24px 24px}
+    .hero-h1{font-size:36px}
+    .launch{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width: 600px){
+    .top{padding:10px 14px;gap:10px}
+    .search{display:none}
+    .top-actions .icon-btn:first-child{display:none}
+    .logo{height:38px}
+    .logo-sq{width:38px}
+    .logo-wide img{height:38px}
+    .brand-divider{height:26px}
+    .crumbs{font-size:11px}
+    .hero-h1{font-size:30px}
+    .spotlight{grid-template-columns:1fr}
+    .contact-list{grid-template-columns:1fr}
+    .news-item{grid-template-columns:auto 1fr;gap:10px}
+    .news-arrow{display:none}
+    .foot{padding:20px 16px 24px;flex-direction:column;align-items:flex-start}
+  }
+  @media (max-width: 420px){
+    .launch{grid-template-columns:1fr 1fr}
+    .brand-row{gap:8px}
+    .brand-divider{display:none}
+  }
+
+  /* icons — inline svg styling */
+  svg.i{width:18px;height:18px;stroke-width:1.5;stroke:currentColor;fill:none;stroke-linecap:round;stroke-linejoin:round;display:block}
+  svg.i-sm{width:14px;height:14px}
+  svg.i-lg{width:22px;height:22px}
+</style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<header class="top">
+  <button class="icon-btn menu-btn" id="menu-btn" aria-label="Open menu">
+    <svg class="i" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+  </button>
+
+  <div class="brand-row" aria-label="Ray White Glenelg | Brighton, Ray White Projects SA, Loan Market Glenelg">
+    <a class="logo logo-sq" href="#home" title="Ray White Glenelg | Brighton">
+      <img src="assets/raywhite.jpg" alt="Ray White" />
+    </a>
+    <span class="brand-divider" aria-hidden="true"></span>
+    <a class="logo logo-wide" href="#home" title="Ray White Projects SA">
+      <img src="assets/raywhite-projects.png" alt="Ray White Projects" />
+    </a>
+    <span class="brand-divider" aria-hidden="true"></span>
+    <a class="logo logo-sq" href="#home" title="Loan Market Glenelg">
+      <img src="assets/loanmarket.jpg" alt="Loan Market" />
+    </a>
+
+    <span class="brand-caption">Our Springboard <br/><em>team intranet</em></span>
+  </div>
+
+  <div class="top-spacer"></div>
+
+  <label class="search" aria-label="Search the Springboard">
+    <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" placeholder="Search documents, people, listings…" />
+  </label>
+
+  <div class="top-actions">
+    <button class="icon-btn" title="Help">
+      <svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg>
+    </button>
+    <button class="icon-btn" title="Notifications">
+      <svg class="i" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 7 3 9H3c0-2 3-2 3-9Z"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>
+    </button>
+    <span class="avatar" title="Your profile">JS</span>
+  </div>
+</header>
+
+<!-- ===== SHELL ===== -->
+<div class="shell">
+
+  <!-- ===== SIDE NAV ===== -->
+  <aside class="side" aria-label="Primary navigation">
+    <div class="nav-label">Springboard</div>
+    <a class="nav-item active" href="#home">
+      <svg class="i ico" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7"/><path d="M5 10v9h14v-9"/></svg>
+      <span>Home</span>
+    </a>
+
+    <div class="nav-divider"></div>
+    <div class="nav-label">Teams</div>
+    <a class="nav-item" href="#sales">
+      <svg class="i ico" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V10l7-5 7 5v11"/><path d="M10 21v-6h4v6"/></svg>
+      <span>Sales</span>
+    </a>
+    <a class="nav-item" href="#pm">
+      <svg class="i ico" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M10 21v-6h4v6"/><path d="M14 4 9 9"/></svg>
+      <span>Property management</span>
+    </a>
+    <a class="nav-item" href="#loanmarket">
+      <svg class="i ico" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M5 6v12h14V6"/><path d="M9 11h6"/><path d="M9 15h4"/></svg>
+      <span>Loan Market</span>
+    </a>
+
+    <div class="nav-divider"></div>
+    <div class="nav-label">Operations</div>
+    <a class="nav-item" href="#admin">
+      <svg class="i ico" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18"/><path d="M8 4v5"/><path d="M16 4v5"/></svg>
+      <span>Administration &amp; marketing</span>
+    </a>
+    <a class="nav-item" href="#learning">
+      <svg class="i ico" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4Z"/><path d="M7 9v5c0 1.7 2.2 3 5 3s5-1.3 5-3V9"/><path d="M21 7v7"/></svg>
+      <span>Learning Hub</span>
+    </a>
+    <a class="nav-item" href="#policies">
+      <svg class="i ico" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>
+      <span>Policies</span>
+    </a>
+
+    <div class="side-foot">
+      Need something else? <br/>
+      <a href="/cdn-cgi/l/email-protection#2c5f5c5e45424b4e434d5e486c5e4d555b444558494b40494249404b024f4341" style="border-bottom:1px solid var(--rw-grey-300);padding-bottom:1px;color:var(--rw-ink);font-weight:700">Email the Springboard team</a>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+
+    <div class="crumbs">
+      <span>Springboard</span><span class="sep">/</span><span>Home</span>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-eyebrow">Welcome to</div>
+        <h1 class="hero-h1">Our <em>Springboard</em>.</h1>
+        <p class="hero-p">The launchpad for everyone at Ray White Glenelg | Brighton, Ray White Projects SA and Loan Market Glenelg. Find tools, news, training and the people who keep our week moving — across all three businesses.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#launchpad">
+            Jump to the launchpad
+            <svg class="i i-sm" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#learning">New here? Start the induction</a>
+        </div>
+      </div>
+
+      <aside class="hero-right" aria-label="Today">
+        <div class="label">Today</div>
+        <div class="today-date" id="today-date">Wednesday, 20 May</div>
+        <div class="today-weather">Glenelg · 18° partly cloudy · sunset 5:18pm</div>
+        <ul class="today-list">
+          <li>
+            <span class="pill-time">9:00am</span>
+            <div>
+              <div class="meet">Sales team huddle</div>
+              <div class="sub">Boardroom · Glenelg office</div>
+            </div>
+          </li>
+          <li>
+            <span class="pill-time">11:30am</span>
+            <div>
+              <div class="meet">PM portfolio review</div>
+              <div class="sub">Online · Teams link in calendar</div>
+            </div>
+          </li>
+          <li>
+            <span class="pill-time">2:00pm</span>
+            <div>
+              <div class="meet">Loan Market — Q3 pipeline</div>
+              <div class="sub">Brighton boardroom</div>
+            </div>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- LAUNCHPAD -->
+    <div id="launchpad" class="sec-head">
+      <h2 class="sec-title">Launchpad</h2>
+      <a class="sec-link" href="#">See all tools</a>
+    </div>
+    <section class="launch">
+      <a class="tile">
+        <div class="tile-ico"><svg class="i i-lg" viewBox="0 0 24 24"><path d="M3 7h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg></div>
+        <div class="tile-name">Webmail</div>
+        <div class="tile-sub">Your Ray White inbox</div>
+      </a>
+      <a class="tile">
+        <div class="tile-ico"><svg class="i i-lg" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg></div>
+        <div class="tile-name">Calendar</div>
+        <div class="tile-sub">Office &amp; team diaries</div>
+      </a>
+      <a class="tile">
+        <div class="tile-ico"><svg class="i i-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9h6v6H9z"/></svg></div>
+        <div class="tile-name">VaultRE</div>
+        <div class="tile-sub">CRM &amp; listings</div>
+      </a>
+      <a class="tile">
+        <div class="tile-ico"><svg class="i i-lg" viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="M8 10h8"/><path d="M8 14h5"/></svg></div>
+        <div class="tile-name">Property Tree</div>
+        <div class="tile-sub">PM trust accounting</div>
+      </a>
+      <a class="tile">
+        <div class="tile-ico"><svg class="i i-lg" viewBox="0 0 24 24"><path d="M4 4h16v12H4z"/><path d="M2 20h20"/><path d="M9 16v4"/><path d="M15 16v4"/></svg></div>
+        <div class="tile-name">Brand Central</div>
+        <div class="tile-sub">Templates &amp; collateral</div>
+      </a>
+      <a class="tile">
+        <div class="tile-ico"><svg class="i i-lg" viewBox="0 0 24 24"><path d="M12 3 3 7v5c0 5 4 8 9 9 5-1 9-4 9-9V7l-9-4Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <div class="tile-name">Whiteboard</div>
+        <div class="tile-sub">Network intranet</div>
+      </a>
+      <a class="tile">
+        <div class="tile-ico"><svg class="i i-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div>
+        <div class="tile-name">Timesheets</div>
+        <div class="tile-sub">Submit &amp; review</div>
+      </a>
+      <a class="tile">
+        <div class="tile-ico"><svg class="i i-lg" viewBox="0 0 24 24"><path d="M3 7h18v10H3z"/><path d="M3 12h18"/><circle cx="8" cy="14.5" r="1"/></svg></div>
+        <div class="tile-name">Expenses</div>
+        <div class="tile-sub">Reimbursements</div>
+      </a>
+      <a class="tile">
+        <div class="tile-ico"><svg class="i i-lg" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 6 8 7 8-7"/></svg></div>
+        <div class="tile-name">Marketing requests</div>
+        <div class="tile-sub">Submit a brief</div>
+      </a>
+      <a class="tile">
+        <div class="tile-ico"><svg class="i i-lg" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4Z"/><path d="M7 9v5c0 1.7 2.2 3 5 3s5-1.3 5-3V9"/></svg></div>
+        <div class="tile-name">Learning Hub</div>
+        <div class="tile-sub">Courses &amp; CPD</div>
+      </a>
+      <a class="tile">
+        <div class="tile-ico"><svg class="i i-lg" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3 2.6-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2"/><path d="M14 18c0-2 1.5-3 3-3s3 1 3 3"/></svg></div>
+        <div class="tile-name">Team directory</div>
+        <div class="tile-sub">Find a colleague</div>
+      </a>
+      <a class="tile">
+        <div class="tile-ico"><svg class="i i-lg" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg></div>
+        <div class="tile-name">Forms &amp; templates</div>
+        <div class="tile-sub">Contracts, REIs, checklists</div>
+      </a>
+    </section>
+
+    <!-- ANNOUNCEMENTS + EVENTS -->
+    <section class="cols">
+      <div class="card">
+        <div class="card-head">
+          <h3>What's new</h3>
+          <a class="sec-link" href="#">All announcements</a>
+        </div>
+        <div class="news-list">
+          <a class="news-item">
+            <span class="tag sales">Sales</span>
+            <div class="news-body">
+              <div class="ttl">May auction campaign — final run sheet released</div>
+              <div class="meta">Posted yesterday by Marketing · 3 min read</div>
+            </div>
+            <svg class="i news-arrow" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>
+          </a>
+          <a class="news-item">
+            <span class="tag pm">PM</span>
+            <div class="news-body">
+              <div class="ttl">Routine inspection cadence — what's changing in June</div>
+              <div class="meta">Posted 18 May by Property Management · 4 min read</div>
+            </div>
+            <svg class="i news-arrow" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>
+          </a>
+          <a class="news-item">
+            <span class="tag lm">Loan Market</span>
+            <div class="news-body">
+              <div class="ttl">Federal Budget 2026–27 landlord briefing now on the Hub</div>
+              <div class="meta">Posted 16 May by Loan Market Glenelg · 6 min read</div>
+            </div>
+            <svg class="i news-arrow" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>
+          </a>
+          <a class="news-item">
+            <span class="tag admin">Admin</span>
+            <div class="news-body">
+              <div class="ttl">Office shutdown — King's Birthday public holiday hours</div>
+              <div class="meta">Posted 14 May by Administration · 1 min read</div>
+            </div>
+            <svg class="i news-arrow" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>This week</h3>
+          <a class="sec-link" href="#">Full calendar</a>
+        </div>
+        <div class="events">
+          <div class="event">
+            <div class="datestamp"><span class="m">Wed</span><span class="d">21</span></div>
+            <div>
+              <div class="ttl">Glenelg office sales meeting</div>
+              <div class="sub">9:00am · Boardroom · weekly</div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="datestamp"><span class="m">Thu</span><span class="d">22</span></div>
+            <div>
+              <div class="ttl">Auction night — six properties</div>
+              <div class="sub">6:00pm · Brighton showroom</div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="datestamp"><span class="m">Fri</span><span class="d">23</span></div>
+            <div>
+              <div class="ttl">Loan Market Q3 pipeline review</div>
+              <div class="sub">2:00pm · Brighton boardroom</div>
+            </div>
+          </div>
+          <div class="event">
+            <div class="datestamp"><span class="m">Sat</span><span class="d">24</span></div>
+            <div>
+              <div class="ttl">Open homes weekend</div>
+              <div class="sub">10:00am – 2:00pm · listings on VaultRE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPOTLIGHT -->
+    <div class="sec-head">
+      <h2 class="sec-title">Spotlight</h2>
+      <a class="sec-link" href="#">More from the team</a>
+    </div>
+    <section class="spotlight">
+      <a class="spot">
+        <div class="ph ph-1"><span class="ph-tag">Training</span></div>
+        <div class="spot-body">
+          <h4>New starter induction, refreshed</h4>
+          <p>A shorter, friendlier first-week pathway — built with property managers, sales and Loan Market together.</p>
+        </div>
+      </a>
+      <a class="spot">
+        <div class="ph ph-2"><span class="ph-tag">Wins</span></div>
+        <div class="spot-body">
+          <h4>15 sales under the hammer in April</h4>
+          <p>A standout month for the Glenelg and Brighton teams — see the recap and what we learned.</p>
+        </div>
+      </a>
+      <a class="spot">
+        <div class="ph ph-3"><span class="ph-tag">Wellbeing</span></div>
+        <div class="spot-body">
+          <h4>Coffee &amp; connect — every second Friday</h4>
+          <p>Casual cross-team catch up. Bring a colleague, bring an idea. Next one is 30 May at the Glenelg cafe.</p>
+        </div>
+      </a>
+    </section>
+
+    <!-- QUICK CONTACTS -->
+    <div class="sec-head">
+      <h2 class="sec-title">Who to ask</h2>
+      <a class="sec-link" href="#">Full directory</a>
+    </div>
+    <section class="contact-bar">
+      <div>
+        <h3>Stuck on something?</h3>
+        <p>These are the first ports of call for everyday questions across our offices.</p>
+      </div>
+      <div class="contact-list">
+        <div class="contact">
+          <span class="role">Sales support</span>
+          <span class="who">Emma Ridley</span>
+          <span class="reach">ext. 102 · emma@</span>
+        </div>
+        <div class="contact">
+          <span class="role">Property management</span>
+          <span class="who">Lauren Hoffmann</span>
+          <span class="reach">ext. 118 · lauren@</span>
+        </div>
+        <div class="contact">
+          <span class="role">Loan Market</span>
+          <span class="who">Daniel Park</span>
+          <span class="reach">ext. 204 · daniel@</span>
+        </div>
+        <div class="contact">
+          <span class="role">IT &amp; systems</span>
+          <span class="who">Jamie Tan</span>
+          <span class="reach">ext. 110 · helpdesk@</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div>© 2026 Ray White Glenelg | Brighton, Ray White Projects SA and Loan Market Glenelg. For team use only.</div>
+      <div>
+        <a href="#">Springboard feedback</a>
+        &nbsp;·&nbsp;
+        <a href="#">Brand Central</a>
+        &nbsp;·&nbsp;
+        <a href="#">Whiteboard</a>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Today's date — kept simple so it's accurate every day the page is opened.
+  (function(){
+    var el = document.getElementById('today-date');
+    if(!el) return;
+    var d = new Date();
+    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    el.textContent = days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()];
+  })();
+
+  // Lightweight nav active-state toggle (for in-page demos).
+  document.querySelectorAll('.nav-item').forEach(function(item){
+    item.addEventListener('click', function(e){
+      document.querySelectorAll('.nav-item').forEach(function(i){i.classList.remove('active')});
+      item.classList.add('active');
+      // close mobile drawer after a nav click
+      document.body.classList.remove('nav-open');
+    });
+  });
+
+  // Mobile menu toggle
+  var menuBtn = document.getElementById('menu-btn');
+  if(menuBtn){
+    menuBtn.addEventListener('click', function(){
+      document.body.classList.toggle('nav-open');
+    });
+  }
+  // Tap the scrim to close
+  document.addEventListener('click', function(e){
+    if(!document.body.classList.contains('nav-open')) return;
+    var side = document.querySelector('.side');
+    if(side && !side.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)){
+      document.body.classList.remove('nav-open');
+    }
+  });
+</script>
+</body>
+</html>
